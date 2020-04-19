@@ -10,14 +10,14 @@ li $s2, 0xFFFF0014 #endereço do identificador de tecla
 start:
 li $t0, 1 #t0 escolhe a linha a testar
 loop:
-la $s3, values #get initial address of values
-sb $t0, 0($s1) #choose line
-sll $t0, $t0, 1 #get ready to select next line
-lb $t1, 0($s2) #t1 will have pressed key value
-andi $t1, $t1, 0xFF #make sure remaining bits on the register are at 0
-jal write2 #go write found key
-bgt $t0, 16, start #if chosen line is bigger than line 4, restart
-j loop
+	la $s3, values #get initial address of values
+	sb $t0, 0($s1) #choose line
+	sll $t0, $t0, 1 #get ready to select next line
+	lb $t1, 0($s2) #t1 will have pressed key value
+	andi $t1, $t1, 0xFF #make sure remaining bits on the register are at 0
+	jal write2 #go write found key
+	bgt $t0, 16, start #if chosen line is bigger than line 4, restart
+	j loop
 
 
 
